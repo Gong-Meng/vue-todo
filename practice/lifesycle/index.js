@@ -2,7 +2,7 @@ import Vue from "vue"
 
 new Vue({
   el: '#root',
-  template: '<div>{{text}}</div>',
+  // template: '<div>{{text}}</div>',
   data: {
     text: 'aaa'
   },
@@ -35,5 +35,9 @@ new Vue({
   },
   destroyed () {
     console.log(this, 'destroyed')
+  },
+  render (h) {
+    console.log('render function invoked')
+    return h('div', {}, this.text)
   }
 })

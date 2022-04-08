@@ -1,7 +1,7 @@
 <template>
-    <header :class="$style.mainHeader">
-        <h1>Todo</h1>
-    </header>
+  <header :class="$style.mainHeader">
+    <h1>Todo</h1>
+  </header>
 </template>
 
 <style lang="stylus" module>

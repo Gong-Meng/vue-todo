@@ -6,7 +6,8 @@
     "rules": {
         "eqeqeq": "off",
         "no-new": "off",
-        "semi": "off"
+        "semi": "off",
+        "quotes": "off"
     },
     "parser": "babel-eslint"
 }

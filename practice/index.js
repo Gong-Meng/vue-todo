@@ -1,6 +1,1 @@
-import Vue from 'vue'
-
-new Vue({
-  el: '#root',
-  template: '<div>this is template</div>'
-})
+import './instance'

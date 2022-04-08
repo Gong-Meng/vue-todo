@@ -4,7 +4,9 @@
         "html"
     ],
     "rules": {
-        "eqeqeq": "off"
+        "eqeqeq": "off",
+        "no-new": "off",
+        "semi": "off"
     },
     "parser": "babel-eslint"
 }

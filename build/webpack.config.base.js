@@ -1,4 +1,6 @@
 const path = require('path')                            //path是Nodejs中的基本包,用来处理路径
+const createVueLoaderOptions = require('./vue-loader.config')
+const isDev = process.env.NODE_ENV === "development" 
 
 const config = {
     target: "web",                                      //设置webpack的编译目标是web平台
@@ -11,7 +13,8 @@ const config = {
         rules:[                                         //所以针对不同类型的文件,我们定义不同的识别规则,最终目的都是打包成js文件
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'                    //处理.vue文件
+                loader: 'vue-loader',                    //处理.vue文件
+                options: createVueLoaderOptions(isDev),
             },
             {
                 test: /\.jsx$/,

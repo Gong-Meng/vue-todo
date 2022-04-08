@@ -37,7 +37,7 @@ if(isDev){
                 {
                     test: /\.styl/,
                     use: [
-                        'style-loader',                     //将css写入到html中去
+                        'vue-style-loader',                     //将css写入到html中去
                         'css-loader',                       //css-loader处理css
                         {
                             loader: 'postcss-loader',
@@ -69,7 +69,7 @@ if(isDev){
                 {
                     test: /\.styl/,
                     use: ExtractPlugin.extract({
-                        fallback: 'style-loader',
+                        fallback: 'vue-style-loader',
                         use: [
                             'css-loader',                       //css-loader处理css
                             {

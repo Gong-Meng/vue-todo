@@ -1,6 +1,6 @@
 import Vue from "vue"
 
-new Vue({
+const app = new Vue({
   el: '#root',
   // template: '<div>{{text}}</div>',
   data: {
@@ -37,7 +37,23 @@ new Vue({
     console.log(this, 'destroyed')
   },
   render (h) {
-    console.log('render function invoked')
-    return h('div', {}, this.text)
+    throw new TypeError('render error')
+    // console.log('render function invoked')
+    // return h('div', {}, this.text)
+  },
+  renderError (h, err) {
+    return h('div', {}, err.stack)
+  },
+  errorCaptured () {
+    // 会向上冒泡，并且正式环境可以使用
   }
 })
+
+app.$mount('#root')
+// setInterval(() => {
+//   app.text = app.text += 1
+// }, 1000)
+
+setTimeout(() => {
+  app.$destroy()
+}, 1000)

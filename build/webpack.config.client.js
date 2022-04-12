@@ -19,13 +19,16 @@ const defaultPlugins = [
 ]
 
 const devServer = {                                //这个devServer的配置是在webpack2.x以后引入的,1.x是没有的
-    port: 8000,                                     //访问的端口号
-    host: '127.0.0.1',                              //可以设置0.0.0.0 ,这样设置你可以通过127.0.0.1或则localhost去访问
-    overlay: {
-        errors: true,                               //编译中遇到的错误都会显示到网页中去
-    },
-    // open: true ,                                 //项目启动时,会默认帮你打开浏览器
-    hot: true                                       //在单页面应用开发中,我们修改了代码后是整个页面都刷新,开启hot后,将只刷新对应的组件
+  port: 8000,                                     //访问的端口号
+  host: '127.0.0.1',                              //可以设置0.0.0.0 ,这样设置你可以通过127.0.0.1或则localhost去访问
+  overlay: {
+      errors: true,                               //编译中遇到的错误都会显示到网页中去
+  },
+  // open: true ,                                 //项目启动时,会默认帮你打开浏览器
+  historyApiFallback: {
+    index: '/public/index.html'
+  },
+  hot: true                                       //在单页面应用开发中,我们修改了代码后是整个页面都刷新,开启hot后,将只刷新对应的组件
 }
 
 let config

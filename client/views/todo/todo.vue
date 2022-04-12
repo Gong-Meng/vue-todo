@@ -19,6 +19,7 @@
       @togole="togoleFilter"
       @clearAllCompleted="clearAllCompleted"
     />
+    <!-- <router-view /> -->
   </section>
 </template>
 
@@ -28,6 +29,10 @@ import Tabs from './tabs.vue'
 let id = 0
 
 export default {
+  // props: ['id'],
+  // mounted () {
+  //   console.log(this.id)
+  // },
   components: {
     Item,
     Tabs

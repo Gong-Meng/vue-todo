@@ -13,7 +13,9 @@ const defaultPlugins = [
             NODE_ENV: isDev ? '"development"' : '"production"'
         }
     }),
-    new HTMLPlugin()                                //引入HTMLPlugin    
+    new HTMLPlugin({
+      template: path.join(__dirname, 'template.html')
+    })                                //引入HTMLPlugin
 ]
 
 const devServer = {                                //这个devServer的配置是在webpack2.x以后引入的,1.x是没有的
@@ -54,12 +56,12 @@ if(isDev){
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NoEmitOnErrorsPlugin()
         ])
-    })                                  
+    })
 } else{
     config = merge(baseConfig, {
         entry: {
             app: path.join(__dirname,'../client/index.js'),
-            vendor: ['vue']   
+            vendor: ['vue']
         },
         output: {
             filename: '[name].[chunkhash:8].js'  //此处一定是chunkhash,因为用hash时app和vendor的hash码是一样的了,这样每次业务代码更新,vendor也会更新,也就没有了意义.
@@ -89,11 +91,11 @@ if(isDev){
             new webpack.optimize.CommonsChunkPlugin({          //定义静态文件打包
                 name: 'vendor'
             }),
-            new webpack.optimize.CommonsChunkPlugin({         //将app.js文件中一些关于webpack文件的配置单独打包出为一个文件,用于解决部分浏览器长缓存问题   
+            new webpack.optimize.CommonsChunkPlugin({         //将app.js文件中一些关于webpack文件的配置单独打包出为一个文件,用于解决部分浏览器长缓存问题
                 name: 'runtime'
             })
         ])
     })
-} 
+}
 
 module.exports = config                                 //声明一个config的配置,用于对外暴露

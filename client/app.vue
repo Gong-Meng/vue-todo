@@ -3,6 +3,7 @@
     <div id="cover" />
     <Header />
     <p>{{fullName}} {{counter}}</p>
+    <!-- <p>{{textA}} {{textPlus}} {{textC}}</p> -->
     <!-- <Todo /> -->
     <router-link to="/app">app</router-link>
     <!-- <router-link to="/app/123">app123</router-link>
@@ -35,8 +36,10 @@ export default {
     // Todo
   },
   mounted () {
+    // this['a/updateText']('123')
+    // this['a/add']()
     // console.log(this.$route)
-    console.log(this.$store)
+    // console.log(this.$store, this['a/textPlus'])
     // this.$store.state.count = 1
     // let i = 1
     // setInterval(() => {
@@ -55,20 +58,30 @@ export default {
       time: 2000
     })
 
-    this.updateCount({
-      num: 445,
-      num2: 123
-    })
+    // this.updateCount({
+    //   num: 445,
+    //   num2: 123
+    // })
+    // this.testAction()
   },
   computed: {
+    // textA () {
+    //   return this.$store.state.b.text
+    // },
     // ...mapState(['count']),
     // ...mapState({
     //   counter: 'count'
     // }),
     ...mapState({
       counter: (state) => state.count
+      // textA: (state) => state.a.text,
+      // textC: (state) => state.c.text
     }),
-    ...mapGetters(['fullName'])
+    // ...mapGetters(['fullName', 'a/textPlus'])
+    ...mapGetters({
+      fullName: 'fullName'
+      // textPlus: 'a/textPlus'
+    })
     // count () {
     //   return this.$store.state.count
     // },
@@ -77,7 +90,9 @@ export default {
     // }
   },
   methods: {
+    // ...mapActions(['updateCountAsync', 'a/add', 'testAction']),
     ...mapActions(['updateCountAsync']),
+    // ...mapMutations(['updateCount', 'a/updateText'])
     ...mapMutations(['updateCount'])
   }
 }

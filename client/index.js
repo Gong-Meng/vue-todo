@@ -17,6 +17,29 @@ Vue.use(Vuex)
 
 const router = createRouter()
 const store = createStore()
+
+store.registerModule('c', {
+  state: {
+    text: 3
+  }
+})
+
+// 监听state
+// store.watch((state) => state.count + 1, (newCount) => {
+//   console.log('new count watched:', newCount)
+// })
+
+// mutation 事件订阅
+// store.subscribe((mutation, state) => {
+//   console.log(mutation.type)
+//   console.log(mutation.payload)
+// })
+
+// store.subscribeAction((action, state) => {
+//   console.log(action.type)
+//   console.log(action.payload)
+// })
+
 // const root = document.createElement('div') // 创建div节点
 // document.body.appendChild(root) // 将div节点添加到body下
 

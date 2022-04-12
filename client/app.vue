@@ -20,7 +20,9 @@
 <script>
 import {
   mapState,
-  mapGetters
+  mapGetters,
+  mapActions,
+  mapMutations
 } from 'vuex'
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
@@ -35,10 +37,28 @@ export default {
   mounted () {
     // console.log(this.$route)
     console.log(this.$store)
-    let i = 1
-    setInterval(() => {
-      this.$store.commit('updateCount', i++)
-    }, 1000)
+    // this.$store.state.count = 1
+    // let i = 1
+    // setInterval(() => {
+    //   // this.$store.commit('updateCount', i++)
+    //   this.$store.commit('updateCount', {
+    //     num: i++,
+    //     num2: 123
+    //   })
+    // }, 1000)
+    // this.$store.dispatch('updateCountAsync', {
+    //   num: 5,
+    //   time: 2000
+    // })
+    this.updateCountAsync({
+      num: 5,
+      time: 2000
+    })
+
+    this.updateCount({
+      num: 445,
+      num2: 123
+    })
   },
   computed: {
     // ...mapState(['count']),
@@ -55,6 +75,10 @@ export default {
     // fullName () {
     //   return this.$store.getters.fullName
     // }
+  },
+  methods: {
+    ...mapActions(['updateCountAsync']),
+    ...mapMutations(['updateCount'])
   }
 }
 </script>

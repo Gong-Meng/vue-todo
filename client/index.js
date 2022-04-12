@@ -1,6 +1,7 @@
 import Vue from 'vue' // 引用vue类库
-import VueRouter from 'vue-router'
 import App from './app.vue'
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
 // import './assets/styles/test.css'
 // import './assets/styles/test-stylus.styl'
@@ -9,10 +10,13 @@ import App from './app.vue'
 
 import './assets/styles/global.styl'
 import createRouter from './config/router'
+import createStore from './store/store'
 
 Vue.use(VueRouter)
+Vue.use(Vuex)
 
 const router = createRouter()
+const store = createStore()
 // const root = document.createElement('div') // 创建div节点
 // document.body.appendChild(root) // 将div节点添加到body下
 
@@ -39,6 +43,7 @@ router.afterEach((to, from) => {
 })
 
 new Vue({
+  store,
   router,
   render: (h) => h(App)
   // vue在创建Vue实例时,通过调用render方法来渲染实例的DOM树,也就是这个组件渲染的是App的内容

@@ -5,17 +5,18 @@ const {merge} = require("webpack-merge");
 const ExtractPlugin = require("extract-text-webpack-plugin")
 const baseConfig = require("./webpack.config.base")
 const isDev = process.env.NODE_ENV === "development"    //判断是否为测试环境,在启动脚本时设置的环境变量都是存在于process.env这个对象里面的
-
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 const defaultPlugins = [
-    new webpack.DefinePlugin({                      //主要作用是在此处可以根据isdev配置process.env,一是可以在js代码中可以获取到process.env,
-        'process.env':{                             //二是webpack或则vue等根据process.env如果是development,会给一些特殊的错误提醒等,而这些特殊项在正式环境是不需要的
-            NODE_ENV: isDev ? '"development"' : '"production"'
-        }
-    }),
-    new HTMLPlugin({
-      template: path.join(__dirname, 'template.html')
-    })                                //引入HTMLPlugin
+  new webpack.DefinePlugin({                      //主要作用是在此处可以根据isdev配置process.env,一是可以在js代码中可以获取到process.env,
+      'process.env':{                             //二是webpack或则vue等根据process.env如果是development,会给一些特殊的错误提醒等,而这些特殊项在正式环境是不需要的
+          NODE_ENV: isDev ? '"development"' : '"production"'
+      }
+  }),
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  }),                                //引入HTMLPlugin
+  new VueClientPlugin()
 ]
 
 const devServer = {                                //这个devServer的配置是在webpack2.x以后引入的,1.x是没有的

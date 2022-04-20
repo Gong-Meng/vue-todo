@@ -10,7 +10,7 @@ let config
 config = merge(baseConfig, {
     target: 'node',
     entry: path.join(__dirname,'../client/server-entry.js'),
-    devtool: '#source-map',
+    devtool: 'source-map',
     output: {
       libraryTarget: 'commonjs2',
       filename: 'server-entry.js',

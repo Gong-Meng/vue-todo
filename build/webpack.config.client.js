@@ -64,11 +64,12 @@ if(isDev){
 } else{
     config = merge(baseConfig, {
         entry: {
-            app: path.join(__dirname,'../client/client-entry.js'),
-            vendor: ['vue']
+          app: path.join(__dirname,'../client/client-entry.js'),
+          vendor: ['vue']
         },
         output: {
-            filename: '[name].[chunkhash:8].js'  //此处一定是chunkhash,因为用hash时app和vendor的hash码是一样的了,这样每次业务代码更新,vendor也会更新,也就没有了意义.
+          filename: '[name].[chunkhash:8].js',  //此处一定是chunkhash,因为用hash时app和vendor的hash码是一样的了,这样每次业务代码更新,vendor也会更新,也就没有了意义.
+          publicPath: '/public/'
         },
         module:{
             rules:[

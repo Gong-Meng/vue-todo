@@ -23,6 +23,9 @@ import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
 
 export default {
+  metaInfo: {
+    title: 'Jokcy\'s Todo App'
+  },
   components: {
     Header,
     Footer

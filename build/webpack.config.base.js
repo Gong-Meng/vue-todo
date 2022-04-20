@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === "development"
 
 const config = {
     target: "web",                                      //设置webpack的编译目标是web平台
-    entry: path.join(__dirname,'../client/index.js'),         //声明js文件入口,__dirname就是我们文件的根目录,用join拼接
+    entry: path.join(__dirname,'../client/client-entry.js'),         //声明js文件入口,__dirname就是我们文件的根目录,用join拼接
     output:{                                            //声明出口文件
       filename: 'bundle.[hash:8].js',                          //将挂载的App全部打包成一个bundle.js,在浏览器中可以直接运行的代码
       path: path.join(__dirname,'../dist'),               //bundle.js保存的位置

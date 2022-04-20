@@ -3,18 +3,12 @@
     <div id="cover" />
     <Header />
     <p>{{fullName}} {{counter}}</p>
-    <!-- <p>{{textA}} {{textPlus}} {{textC}}</p> -->
-    <!-- <Todo /> -->
     <router-link to="/app">app</router-link>
-    <!-- <router-link to="/app/123">app123</router-link>
-    <router-link to="/app/456">app456</router-link> -->
     <router-link to="/login">login</router-link>
-    <!-- <router-link to="/login/exact">login exact</router-link> -->
     <transition name="fade">
       <router-view />
     </transition>
     <Footer />
-    <!-- <router-view name="a" /> -->
   </div>
 </template>
 
@@ -27,7 +21,6 @@ import {
 } from 'vuex'
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
-// import Todo from './views/todo/todo.vue'
 
 export default {
   components: {

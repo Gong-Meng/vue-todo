@@ -1,5 +1,16 @@
 <template>
   <section class="real-app">
+    <div class="tab-container">
+      <tabs value="1">
+        <tab label="tab1" index="1"/>
+        <tab index="2">
+          <span slot="label" style="color: red;">
+            tab2
+          </span>
+        </tab>
+        <tab label="tab3" index="3"/>
+      </tabs>
+    </div>
     <input
       type="text"
       class="add-input"
@@ -13,7 +24,7 @@
       :todo="todo"
       @del="deleteTodo"
     />
-    <Tabs
+    <Helper
       :filter="filter"
       :todos="todos"
       @togole="togoleFilter"
@@ -25,7 +36,7 @@
 
 <script>
 import Item from './item.vue'
-import Tabs from './tabs.vue'
+import Helper from './tabs.vue'
 let id = 0
 
 export default {
@@ -56,7 +67,7 @@ export default {
   },
   components: {
     Item,
-    Tabs
+    Helper
   },
   data () {
     return {
@@ -97,25 +108,28 @@ export default {
 
 <style lang="stylus" scoped>
 .real-app
-    width 600px
-    margin 0 auto
-    box-shadow 0 0 5px #666
+  width 600px
+  margin 0 auto
+  box-shadow 0 0 5px #666
 
 .add-input
-    position relative
-    margin 0
-    width 100%
-    font-size 24px
-    font-family inherit
-    font-weight inherit
-    line-height 1.4em
-    border none
-    outline none
-    color inherit
-    box-sizing border-box
-    font-smoothing antialiased
-    padding 16px 16px 16px 36px
-    border none
-    box-shadow inset 0 -2px 1px rgba(0, 0, 0, 0.03)
+  position relative
+  margin 0
+  width 100%
+  font-size 24px
+  font-family inherit
+  font-weight inherit
+  line-height 1.4em
+  border none
+  outline none
+  color inherit
+  box-sizing border-box
+  font-smoothing antialiased
+  padding 16px 16px 16px 36px
+  border none
+  box-shadow inset 0 -2px 1px rgba(0, 0, 0, 0.03)
 
+.tab-container
+  background-color #fff
+  padding 0 15px
 </style>

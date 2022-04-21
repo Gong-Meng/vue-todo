@@ -31,7 +31,6 @@ export default {
   components: {
     Header,
     Footer
-    // Todo
   },
   mounted () {
     // this['a/updateText']('123')

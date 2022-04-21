@@ -8,6 +8,8 @@
     <transition name="fade">
       <router-view />
     </transition>
+    <!-- <notification content="test notify" /> -->
+    <button @click="notify">click me</button>
     <Footer />
   </div>
 </template>
@@ -49,10 +51,10 @@ export default {
     //   num: 5,
     //   time: 2000
     // })
-    this.updateCountAsync({
-      num: 5,
-      time: 2000
-    })
+    // this.updateCountAsync({
+    //   num: 5,
+    //   time: 2000
+    // })
 
     // this.updateCount({
     //   num: 445,
@@ -89,7 +91,13 @@ export default {
     // ...mapActions(['updateCountAsync', 'a/add', 'testAction']),
     ...mapActions(['updateCountAsync']),
     // ...mapMutations(['updateCount', 'a/updateText'])
-    ...mapMutations(['updateCount'])
+    ...mapMutations(['updateCount']),
+    notify () {
+      this.$notify({
+        content: 'test $notify',
+        btn: 'close'
+      })
+    }
   }
 }
 </script>

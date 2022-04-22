@@ -9,5 +9,8 @@ export default { // 同步处理
   },
   fillTodos (state, todos) {
     state.todos = todos
+  },
+  doLogin (state, userInfo) {
+    state.user = userInfo
   }
 }

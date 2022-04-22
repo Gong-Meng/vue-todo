@@ -30,6 +30,10 @@ const devServer = {                                //这个devServer的配置是
   historyApiFallback: {
     index: '/public/index.html'
   },
+  proxy: {
+    '/api': 'http://127.0.0.1:3333',
+    '/user': 'http://127.0.0.1:3333'
+  },
   hot: true                                       //在单页面应用开发中,我们修改了代码后是整个页面都刷新,开启hot后,将只刷新对应的组件
 }
 

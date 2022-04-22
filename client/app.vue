@@ -2,25 +2,25 @@
   <div id="app">
     <div id="cover" />
     <Header />
-    <p>{{fullName}} {{counter}}</p>
+    <!-- <p>{{fullName}} {{counter}}</p>
     <router-link to="/app">app</router-link>
-    <router-link to="/login">login</router-link>
+    <router-link to="/login">login</router-link> -->
     <transition name="fade">
       <router-view />
     </transition>
     <!-- <notification content="test notify" /> -->
-    <button @click="notify">click me</button>
+    <!-- <button @click="notify">click me</button> -->
     <Footer />
   </div>
 </template>
 
 <script>
-import {
-  mapState,
-  mapGetters,
-  mapActions,
-  mapMutations
-} from 'vuex'
+// import {
+//   mapState,
+//   mapGetters,
+//   mapActions,
+//   mapMutations
+// } from 'vuex'
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
 
@@ -69,16 +69,16 @@ export default {
     // ...mapState({
     //   counter: 'count'
     // }),
-    ...mapState({
-      counter: (state) => state.count
-      // textA: (state) => state.a.text,
-      // textC: (state) => state.c.text
-    }),
+    // ...mapState({
+    //   // counter: (state) => state.count
+    //   // textA: (state) => state.a.text,
+    //   // textC: (state) => state.c.text
+    // }),
     // ...mapGetters(['fullName', 'a/textPlus'])
-    ...mapGetters({
-      fullName: 'fullName'
-      // textPlus: 'a/textPlus'
-    })
+    // ...mapGetters({
+    //   fullName: 'fullName'
+    //   // textPlus: 'a/textPlus'
+    // })
     // count () {
     //   return this.$store.state.count
     // },
@@ -87,16 +87,17 @@ export default {
     // }
   },
   methods: {
-    // ...mapActions(['updateCountAsync', 'a/add', 'testAction']),
-    ...mapActions(['updateCountAsync']),
-    // ...mapMutations(['updateCount', 'a/updateText'])
-    ...mapMutations(['updateCount']),
-    notify () {
-      this.$notify({
-        content: 'test $notify',
-        btn: 'close'
-      })
-    }
+  //   // ...mapActions(['updateCountAsync', 'a/add', 'testAction']),
+  //   ...mapActions(['updateCountAsync']),
+  //   // ...mapMutations(['updateCount', 'a/updateText'])
+  //   ...mapMutations(['updateCount']),
+  //   notify () {
+  //     this.$notify({
+  //       content: 'test $notify',
+  //       btn: 'close'
+  //     })
+  //   }
+  // }
   }
 }
 </script>

@@ -11,19 +11,28 @@ export default {
       default: 'tab'
     }
   },
+  mounted () {
+    this.$parent.panes.push(this)
+  },
+  // inject: ['value'],
+  methods: {
+    handleClick () {
+      this.$parent.onChange(this.index)
+    }
+  },
   computed: {
     active () {
-      return false
+      return this.$parent.value === this.index
     }
   },
   render () {
     const tab = this.$slots.label || <span>{this.label}</span>
     const classNames = {
       tab: true,
-      actie: this.active
+      active: this.active
     }
     return (
-      <li class={classNames}>
+      <li class={classNames} on-click={this.handleClick}>
         {tab}
       </li>
     )

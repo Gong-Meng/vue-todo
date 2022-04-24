@@ -1,9 +1,10 @@
 <template>
   <div :class="['todo-item',todo.completed ? 'completed': '']">
     <input
-      v-model="todo.completed"
       type="checkbox"
       class="toggle"
+      :checked="todo.completed"
+      @click="handleTaggle"
     >
     <label>{{ todo.content }}</label>
     <button
@@ -24,6 +25,10 @@ export default {
   methods: {
     deleteTodo () {
       this.$emit('del', this.todo.id)
+    },
+    handleTaggle (e) {
+      e.preventDefault()
+      this.$emit('toggle', this.todo)
     }
   }
 }

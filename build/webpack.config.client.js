@@ -103,7 +103,8 @@ if(isDev){
             }),
             new webpack.optimize.CommonsChunkPlugin({         //将app.js文件中一些关于webpack文件的配置单独打包出为一个文件,用于解决部分浏览器长缓存问题
                 name: 'runtime'
-            })
+            }),
+            new webpack.NamedChunksPlugin()
         ])
     })
 }

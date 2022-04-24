@@ -3,9 +3,25 @@ const webpack = require("webpack")                      //引入webpack
 const {merge} = require("webpack-merge");
 const baseConfig = require("./webpack.config.base")
 const ExtractPlugin = require("extract-text-webpack-plugin")
-// const VueServerPlugin = require("vue-server-renderer/server-plugin")
+const VueServerPlugin = require("vue-server-renderer/server-plugin")
 
 let config
+
+const isDev = process.env.NODE_ENV === 'development'
+
+
+const plugins = [ //添加两个插件用于hot:true的配置
+  new ExtractPlugin('styles.[contentHash:8].css'),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    'process.env.VUE_ENV': '"server"'
+  })
+  // isDev ? new VueServerPlugin() : null // 使用createBundleRenderer要用到
+]
+
+if (isDev) {
+  plugins.push(new VueServerPlugin())
+}
 
 config = merge(baseConfig, {
     target: 'node',
@@ -37,14 +53,7 @@ config = merge(baseConfig, {
           }
         ]
     },
-    plugins: [ //添加两个插件用于hot:true的配置
-      new ExtractPlugin('styles.[contentHash:8].css'),
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        'process.env.VUE_ENV': '"server"'
-      })
-      // new VueServerPlugin() 使用createBundleRenderer要用到
-    ]
+    plugins
 })
 
 config.resolve = {

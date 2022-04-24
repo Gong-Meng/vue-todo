@@ -3,7 +3,3 @@ export const createError = (code, msg) => {
   err.code = code
   return err
 }
-
-module.exports = {
-  createError
-}

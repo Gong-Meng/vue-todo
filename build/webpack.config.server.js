@@ -47,4 +47,10 @@ config = merge(baseConfig, {
     ]
 })
 
+config.resolve = {
+  alias: {
+    'model': path.join(__dirname, '../client/model/server-model.js')
+  }
+}
+
 module.exports = config                                 //声明一个config的配置,用于对外暴露

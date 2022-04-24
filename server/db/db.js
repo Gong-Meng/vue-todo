@@ -14,14 +14,14 @@ const createError = (code, resp) => {
 }
 
 const handleRequest = ({status, data, ...rest}) => {
-  if ( status === 200) {
+  if (status === 200) {
     return data
   } else {
     throw createError(status, rest)
   }
 }
 
-module.exports = ((appId, appKey) => {
+module.exports = (appId, appKey) => {
   const getHeaders = () => {
     const now = Date.now()
     return {
@@ -31,10 +31,11 @@ module.exports = ((appId, appKey) => {
   }
 
   return {
-    async getAllTodos() {
-      return handleRequest(await request.get(`/${className}`, {
-        headers: getHeaders()
-      }))
+    async getAllTodos () {
+      return handleRequest(await request.get(
+        `/${className}`,
+        { headers: getHeaders() }
+      ))
     },
     async addTodo (todo) {
       return handleRequest(await request.post(
@@ -70,4 +71,4 @@ module.exports = ((appId, appKey) => {
       ))
     }
   }
-})
+}

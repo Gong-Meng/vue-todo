@@ -1,4 +1,4 @@
-import model from '../../model/client-model'
+import model from 'model'
 import notify from '../../components/notification/function'
 import bus from '../../util/bus'
 
@@ -23,7 +23,7 @@ export default { // 异步处理
   },
   fetchTodos ({ commit }) {
     commit('startLoading')
-    model.getAllTodos().then(data => {
+    return model.getAllTodos().then(data => {
       commit('endLoading')
       commit('fillTodos', data)
     }).catch(err => {
@@ -82,7 +82,6 @@ export default { // 异步处理
     })
   },
   login ({ commit }, { username, password }) {
-    commit('startLoading')
     return new Promise((resolve, reject) => {
       model.login(username, password).then(data => {
         commit('endLoading')

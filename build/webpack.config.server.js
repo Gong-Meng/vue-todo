@@ -3,7 +3,7 @@ const webpack = require("webpack")                      //引入webpack
 const {merge} = require("webpack-merge");
 const baseConfig = require("./webpack.config.base")
 const ExtractPlugin = require("extract-text-webpack-plugin")
-const VueServerPlugin = require("vue-server-renderer/server-plugin")
+// const VueServerPlugin = require("vue-server-renderer/server-plugin")
 
 let config
 
@@ -42,8 +42,8 @@ config = merge(baseConfig, {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         'process.env.VUE_ENV': '"server"'
-      }),
-      new VueServerPlugin()
+      })
+      // new VueServerPlugin() 使用createBundleRenderer要用到
     ]
 })
 
